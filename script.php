@@ -28,8 +28,7 @@ function userIdsHandler(string $userIdsString): string
     $string = preg_replace('/[^0-9,]/ui', ' ', $userIdsString);
 
     if (trim($string, ',') === '') {
-        echo 'Отсутствуют id пользователей, которых нужно выбрать.';
-        exit();
+        throw new InvalidArgumentException('Отсутствуют id пользователей, которых нужно выбрать.');
     }
 
     return $string;
